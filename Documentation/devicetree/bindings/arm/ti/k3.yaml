@@ -235,6 +235,12 @@ properties:
               - ti,j784s4-evm
           - const: ti,j784s4
 
+      - description: K3 TDA54 SoC and Boards
+        items:
+          - enum:
+              - ti,tda54-evm
+          - const: ti,tda54
+
 additionalProperties: true
 
 ...

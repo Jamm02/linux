@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: GPL-2.0-only OR MIT
+/*
+ * Device Tree Source for the TDA54 EVM
+ *
+ * Copyright (C) 2026 Texas Instruments Incorporated - https://www.ti.com/
+ */
+
+/dts-v1/;
+#include "k3-tda54.dtsi"
+
+/ {
+	compatible = "ti,tda54-evm", "ti,tda54";
+	model = "Texas Instruments K3 TDA54 EVM";
+
+	memory@80000000 {
+		reg = <0x00 0x80000000 0x00 0x20000000>;
+		bootph-all;
+		device_type = "memory";
+	};
+};

@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: GPL-2.0-only OR MIT
+/*
+ * Device Tree Source for TDA54 SoC Family MCU/Wakeup Domain peripherals
+ *
+ * Copyright (C) 2026 Texas Instruments Incorporated - https://www.ti.com/
+ */
+
+&cbass_mcu_wakeup {
+	scm_conf: syscon@5e800000 {
+		compatible = "ti,tda54-scm-conf", "syscon";
+		reg = <0x0 0x5e800000 0x0 0x1ffff>;
+		ti,proxy-id = <1>;
+	};
+};

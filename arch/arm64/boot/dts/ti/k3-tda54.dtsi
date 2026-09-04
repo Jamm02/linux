@@ -1,0 +1,437 @@
+// SPDX-License-Identifier: GPL-2.0-only OR MIT
+/*
+ * Device Tree Source for TDA54 SoC Family
+ *
+ * Copyright (C) 2026 Texas Instruments Incorporated - https://www.ti.com/
+ */
+
+#include <dt-bindings/interrupt-controller/irq.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+
+/ {
+	compatible = "ti,tda54";
+	#address-cells = <2>;
+	interrupt-parent = <&gic>;
+	model = "Texas Instruments K3 TDA54 SoC";
+	#size-cells = <2>;
+
+	cpus {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		cpu-map {
+			cluster0: cluster0 {
+				core0 {
+					cpu = <&cpu0>;
+				};
+
+				core1 {
+					cpu = <&cpu1>;
+				};
+
+				core2 {
+					cpu = <&cpu2>;
+				};
+
+				core3 {
+					cpu = <&cpu3>;
+				};
+
+				core4 {
+					cpu = <&cpu4>;
+				};
+
+				core5 {
+					cpu = <&cpu5>;
+				};
+
+				core6 {
+					cpu = <&cpu6>;
+				};
+
+				core7 {
+					cpu = <&cpu7>;
+				};
+			};
+		};
+
+		/*
+		 * Cortex-A720AE implements the MPIDR MT bit, so Aff0 is the
+		 * thread ID (always 0, single-threaded) and Aff1 carries the
+		 * core index within the cluster (Aff2).
+		 */
+		cpu0: cpu@0 {
+			compatible = "arm,cortex-a720ae";
+			reg = <0x0>;
+			d-cache-line-size = <64>;
+			d-cache-sets = <256>;
+			d-cache-size = <0x10000>;
+			device_type = "cpu";
+			enable-method = "psci";
+			i-cache-line-size = <64>;
+			i-cache-sets = <256>;
+			i-cache-size = <0x10000>;
+			next-level-cache = <&L2_0>;
+
+			L2_0: l2-cache {
+				compatible = "cache";
+				cache-level = <2>;
+				cache-line-size = <64>;
+				cache-sets = <512>;
+				cache-size = <0x40000>;
+				cache-unified;
+				next-level-cache = <&L3>;
+			};
+		};
+
+		cpu1: cpu@100 {
+			compatible = "arm,cortex-a720ae";
+			reg = <0x100>;
+			d-cache-line-size = <64>;
+			d-cache-sets = <256>;
+			d-cache-size = <0x10000>;
+			device_type = "cpu";
+			enable-method = "psci";
+			i-cache-line-size = <64>;
+			i-cache-sets = <256>;
+			i-cache-size = <0x10000>;
+			next-level-cache = <&L2_1>;
+
+			L2_1: l2-cache {
+				compatible = "cache";
+				cache-level = <2>;
+				cache-line-size = <64>;
+				cache-sets = <512>;
+				cache-size = <0x40000>;
+				cache-unified;
+				next-level-cache = <&L3>;
+			};
+		};
+
+		cpu2: cpu@200 {
+			compatible = "arm,cortex-a720ae";
+			reg = <0x200>;
+			d-cache-line-size = <64>;
+			d-cache-sets = <256>;
+			d-cache-size = <0x10000>;
+			device_type = "cpu";
+			enable-method = "psci";
+			i-cache-line-size = <64>;
+			i-cache-sets = <256>;
+			i-cache-size = <0x10000>;
+			next-level-cache = <&L2_2>;
+
+			L2_2: l2-cache {
+				compatible = "cache";
+				cache-level = <2>;
+				cache-line-size = <64>;
+				cache-sets = <512>;
+				cache-size = <0x40000>;
+				cache-unified;
+				next-level-cache = <&L3>;
+			};
+		};
+
+		cpu3: cpu@300 {
+			compatible = "arm,cortex-a720ae";
+			reg = <0x300>;
+			d-cache-line-size = <64>;
+			d-cache-sets = <256>;
+			d-cache-size = <0x10000>;
+			device_type = "cpu";
+			enable-method = "psci";
+			i-cache-line-size = <64>;
+			i-cache-sets = <256>;
+			i-cache-size = <0x10000>;
+			next-level-cache = <&L2_3>;
+
+			L2_3: l2-cache {
+				compatible = "cache";
+				cache-level = <2>;
+				cache-line-size = <64>;
+				cache-sets = <512>;
+				cache-size = <0x40000>;
+				cache-unified;
+				next-level-cache = <&L3>;
+			};
+		};
+
+		cpu4: cpu@400 {
+			compatible = "arm,cortex-a720ae";
+			reg = <0x400>;
+			d-cache-line-size = <64>;
+			d-cache-sets = <256>;
+			d-cache-size = <0x10000>;
+			device_type = "cpu";
+			enable-method = "psci";
+			i-cache-line-size = <64>;
+			i-cache-sets = <256>;
+			i-cache-size = <0x10000>;
+			next-level-cache = <&L2_4>;
+
+			L2_4: l2-cache {
+				compatible = "cache";
+				cache-level = <2>;
+				cache-line-size = <64>;
+				cache-sets = <512>;
+				cache-size = <0x40000>;
+				cache-unified;
+				next-level-cache = <&L3>;
+			};
+		};
+
+		cpu5: cpu@500 {
+			compatible = "arm,cortex-a720ae";
+			reg = <0x500>;
+			d-cache-line-size = <64>;
+			d-cache-sets = <256>;
+			d-cache-size = <0x10000>;
+			device_type = "cpu";
+			enable-method = "psci";
+			i-cache-line-size = <64>;
+			i-cache-sets = <256>;
+			i-cache-size = <0x10000>;
+			next-level-cache = <&L2_5>;
+
+			L2_5: l2-cache {
+				compatible = "cache";
+				cache-level = <2>;
+				cache-line-size = <64>;
+				cache-sets = <512>;
+				cache-size = <0x40000>;
+				cache-unified;
+				next-level-cache = <&L3>;
+			};
+		};
+
+		cpu6: cpu@600 {
+			compatible = "arm,cortex-a720ae";
+			reg = <0x600>;
+			d-cache-line-size = <64>;
+			d-cache-sets = <256>;
+			d-cache-size = <0x10000>;
+			device_type = "cpu";
+			enable-method = "psci";
+			i-cache-line-size = <64>;
+			i-cache-sets = <256>;
+			i-cache-size = <0x10000>;
+			next-level-cache = <&L2_6>;
+
+			L2_6: l2-cache {
+				compatible = "cache";
+				cache-level = <2>;
+				cache-line-size = <64>;
+				cache-sets = <512>;
+				cache-size = <0x40000>;
+				cache-unified;
+				next-level-cache = <&L3>;
+			};
+		};
+
+		cpu7: cpu@700 {
+			compatible = "arm,cortex-a720ae";
+			reg = <0x700>;
+			d-cache-line-size = <64>;
+			d-cache-sets = <256>;
+			d-cache-size = <0x10000>;
+			device_type = "cpu";
+			enable-method = "psci";
+			i-cache-line-size = <64>;
+			i-cache-sets = <256>;
+			i-cache-size = <0x10000>;
+			next-level-cache = <&L2_7>;
+
+			L2_7: l2-cache {
+				compatible = "cache";
+				cache-level = <2>;
+				cache-line-size = <64>;
+				cache-sets = <512>;
+				cache-size = <0x40000>;
+				cache-unified;
+				next-level-cache = <&L3>;
+			};
+		};
+	};
+
+	firmware {
+		optee {
+			compatible = "linaro,optee-tz";
+			method = "smc";
+		};
+
+		psci: psci {
+			compatible = "arm,psci-1.0";
+			method = "smc";
+		};
+	};
+
+	L3: l3-cache {
+		compatible = "cache";
+		cache-level = <3>;
+		cache-line-size = <64>;
+		cache-sets = <8192>;
+		cache-size = <0x800000>;
+		cache-unified;
+	};
+
+	/*
+	 * GIC is exposed via "view 1", where the distributor and
+	 * redistributor registers appear at a fixed 0x40_0000 offset
+	 * from the SoC's actual GIC base address (as opposed to
+	 * "view 0", which maps them directly at the base address).
+	 */
+	gic: interrupt-controller@1400000 {
+		compatible = "arm,gic-v3";
+		reg = <0x0 0x01400000 0x0 0x10000>, /* GICD */
+		      <0x0 0x01480000 0x0 0x40000>, /* GICR0 */
+		      <0x0 0x014c0000 0x0 0x40000>, /* GICR1 */
+		      <0x0 0x01500000 0x0 0x40000>, /* GICR2 */
+		      <0x0 0x01540000 0x0 0x40000>, /* GICR3 */
+		      <0x0 0x01580000 0x0 0x40000>, /* GICR4 */
+		      <0x0 0x015c0000 0x0 0x40000>, /* GICR5 */
+		      <0x0 0x01600000 0x0 0x40000>, /* GICR6 */
+		      <0x0 0x01640000 0x0 0x40000>; /* GICR7 */
+		ranges;
+		#address-cells = <2>;
+		#interrupt-cells = <3>;
+		interrupt-controller;
+		/* vcpumntirq: virtual CPU interface maintenance interrupt */
+		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+		#redistributor-regions = <8>;
+		#size-cells = <2>;
+
+		gic_its: msi-controller@1040000 {
+			compatible = "arm,gic-v3-its";
+			reg = <0x00 0x01040000 0x00 0x10000>;
+			#msi-cells = <1>;
+			msi-controller;
+		};
+	};
+
+	cbass_main: bus@100000 {
+		compatible = "simple-bus";
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges =
+			<0x00 0x00600000 0x00 0x00600000 0x00 0x00070128>, /* GPIO */
+			<0x00 0x00aa0000 0x00 0x00aa0000 0x00 0x00001000>, /* GPIO INTR */
+			<0x00 0x00120000 0x00 0x00120000 0x00 0x00008000>, /* MAIN PADCFG */
+			<0x00 0x02900000 0x00 0x02900000 0x00 0x00040000>, /* PCIe Wrapper */
+			<0x58 0x04010000 0x58 0x04010000 0x00 0x00001000>, /* MP20 PHY TCA */
+			<0x00 0x04108000 0x00 0x04108000 0x00 0x00000100>, /* USB Wrapper */
+			<0x00 0x04700000 0x00 0x04700000 0x00 0x00000600>, /* DSI Tx Controller */
+			<0x00 0x04e88000 0x00 0x04e88000 0x00 0x00002000>, /* UFS Controller */
+			<0x00 0x04e80000 0x00 0x04e80000 0x00 0x00006000>, /* UFS MPHY Memory*/
+			<0x00 0x04e8c000 0x00 0x04e8c000 0x00 0x00000100>, /* UFS APB SS */
+			<0x00 0x04e8d000 0x00 0x04e8d000 0x00 0x00000800>, /* UFS SS WRAP*/
+			<0x00 0x04f80000 0x00 0x04f80000 0x00 0x00001000>, /* SDHCI0 Controller */
+			<0x00 0x04f88000 0x00 0x04f88000 0x00 0x00000400>,
+			<0x00 0x04f8c000 0x00 0x04f8c000 0x00 0x00001000>, /* SDHCI1 Controller */
+			<0x00 0x04f90000 0x00 0x04f90000 0x00 0x00000400>,
+			<0x00 0x05060000 0x00 0x05060000 0x00 0x00004000>, /* MP16 PHY */
+			<0x00 0x05080000 0x00 0x05080000 0x00 0x00020000>, /* MP20 PHY ctrl + cfg */
+			<0x00 0x06000000 0x00 0x06000000 0x00 0x0000da00>, /* DWC3 USB Controller */
+			<0x00 0x04f00000 0x00 0x04f00000 0x00 0x00004000>, /* DPTX SS Config (DSC/HDCP/ECC/MMR) */
+			<0x00 0x0a040000 0x00 0x0a040000 0x00 0x00040000>, /* DPTX Controller */
+			<0x00 0x0d000000 0x00 0x0d000000 0x00 0x01000000>, /* PCIe Controller */
+			<0x00 0x10000000 0x00 0x10000000 0x00 0x10000000>, /* PCIe DAT0 */
+			<0x00 0x23800000 0x00 0x23800000 0x00 0x00600000>, /* OC MSRAM */
+			<0x00 0x24000000 0x00 0x24000000 0x00 0x000A0000>, /* M55_0 to M55_4 */
+			<0x00 0x30004000 0x00 0x30004000 0x00 0x04BFC000>, /* NAVSS */
+			<0x00 0x38000000 0x00 0x38000000 0x00 0x00800000>, /* SMMU */
+			<0x00 0x458e0000 0x00 0x458e0000 0x00 0x02860143>, /* NAVSS */
+			<0x00 0x51800000 0x00 0x51800000 0x00 0x00120000>, /* DSS */
+			<0x00 0x52000000 0x00 0x52000000 0x00 0x00010000>, /* CDPHY_0 */
+			<0x00 0x52020000 0x00 0x52020000 0x00 0x00002000>, /* CSI2RX_0 */
+			<0x00 0x52025000 0x00 0x52025000 0x00 0x00000200>, /* CSI2RX_0 APB */
+			<0x00 0x54000000 0x00 0x54000000 0x00 0x0003F000>, /* CPSW9G */
+			<0x00 0x52022000 0x00 0x52022000 0x00 0x00000fff>, /* CSI Wrapper */
+			<0x00 0x59002000 0x00 0x59002000 0x00 0x00003000>, /* Camera */
+			<0x00 0x64000000 0x00 0x64000000 0x00 0x00300000>, /* C76_0 */
+			<0x00 0x65000000 0x00 0x65000000 0x00 0x00300000>, /* C76_1 */
+			<0x00 0x66000000 0x00 0x66000000 0x00 0x00300000>, /* C76_2 */
+			<0x00 0x67000000 0x00 0x67000000 0x00 0x00300000>, /* C76_3 */
+			<0x40 0x00000000 0x40 0x00000000 0x02 0x00000000>, /* PCIe DAT1 */
+			<0x4e 0x20000000 0x4e 0x20000000 0x00 0x000fffff>, /* GPU */
+
+			/* MCUSS_WKUP Range */
+			<0x00 0x22000000 0x00 0x22000000 0x00 0x00090000>, /* R52SS_0 Core0 */
+			<0x00 0x22100000 0x00 0x22100000 0x00 0x00090000>, /* R52SS_0 Core1 */
+			<0x00 0x22400000 0x00 0x22400000 0x00 0x00090000>, /* R52SS_1 Core0 */
+			<0x00 0x22500000 0x00 0x22500000 0x00 0x00090000>, /* R52SS_1 Core1 */
+			<0x00 0x22800000 0x00 0x22800000 0x00 0x00090000>, /* R52SS_2 Core0 */
+			<0x00 0x22900000 0x00 0x22900000 0x00 0x00090000>, /* R52SS_2 Core1 */
+			<0x00 0x44083000 0x00 0x44083000 0x00 0x00001000>, /* TIFS dbg */
+			<0x00 0x47100000 0x00 0x47100000 0x00 0x00100000>, /* cmh*/
+			<0x00 0x4a000000 0x00 0x4a000000 0x00 0x00c00000>, /* MCU Secproxy*/
+			<0x00 0x5e909000 0x00 0x5e909000 0x00 0x00010400>,
+			<0x00 0x53330000 0x00 0x53330000 0x00 0x0005005f>,
+			<0x00 0x53400000 0x00 0x53400000 0x00 0x00080128>,
+			<0x00 0x53603000 0x00 0x53603000 0x00 0x00001000>,
+			<0x00 0x53643000 0x00 0x53643000 0x00 0x00001000>,
+			<0x00 0x53683000 0x00 0x53683000 0x00 0x00001000>,
+			<0x00 0x53700000 0x00 0x53700000 0x00 0x00090200>,
+			<0x00 0x53904000 0x00 0x53904000 0x00 0x00131000>,
+			<0x00 0x53b00000 0x00 0x53b00000 0x00 0x00001000>,
+			<0x00 0x53b10000 0x00 0x53b10000 0x00 0x000b0100>,
+			<0x00 0x53c04000 0x00 0x53c04000 0x00 0x00001000>,
+			<0x00 0x55000000 0x00 0x55000000 0x00 0x01782000>,
+			<0x00 0x5e003000 0x00 0x5e003000 0x00 0x00000400>,
+			<0x00 0x5e013000 0x00 0x5e013000 0x00 0x00000400>,
+			<0x00 0x5e080000 0x00 0x5e080000 0x00 0x00001000>,
+			<0x00 0x5e200000 0x00 0x5e200000 0x00 0x00008000>,
+			<0x00 0x5e520000 0x00 0x5e520000 0x00 0x00000100>,
+			<0x00 0x5e800000 0x00 0x5e800000 0x00 0x000033c0>,
+			<0x00 0x70000000 0x00 0x70000000 0x00 0x08000000>,
+			<0x00 0x78000000 0x00 0x78000000 0x00 0x08000000>;
+
+		cbass_mcu_wakeup: bus@22000000 {
+			compatible = "simple-bus";
+			#address-cells = <2>;
+			#size-cells = <2>;
+			ranges =
+				<0x00 0x22000000 0x00 0x22000000 0x00 0x00090000>, /* MCU R52SS_0 Core0 */
+				<0x00 0x22100000 0x00 0x22100000 0x00 0x00090000>, /* MCU R52SS_0 Core1 */
+				<0x00 0x22400000 0x00 0x22400000 0x00 0x00090000>, /* MCU R52SS_1 Core0 */
+				<0x00 0x22500000 0x00 0x22500000 0x00 0x00090000>, /* MCU R52SS_1 Core1 */
+				<0x00 0x22800000 0x00 0x22800000 0x00 0x00090000>, /* MCU R52SS_2 Core0 */
+				<0x00 0x22900000 0x00 0x22900000 0x00 0x00090000>, /* MCU R52SS_2 Core1 */
+				<0x00 0x44083000 0x00 0x44083000 0x00 0x00001000>, /* TIFS dbg */
+				<0x00 0x47100000 0x00 0x47100000 0x00 0x00100000>, /* cmh*/
+				<0x00 0x4a000000 0x00 0x4a000000 0x00 0x00c00000>, /* MCU Secproxy*/
+				<0x00 0x67000000 0x00 0x67000000 0x00 0x01000000>, /* MCUR5F SRAM */
+				<0x00 0x5e909000 0x00 0x5e909000 0x00 0x00010400>, /* VTM */
+				<0x00 0x53330000 0x00 0x53330000 0x00 0x0005005f>, /* ECAP */
+				<0x00 0x53400000 0x00 0x53400000 0x00 0x00080128>, /* GPIO */
+				<0x00 0x53603000 0x00 0x53603000 0x00 0x00001000>, /* DWC I3C0 */
+				<0x00 0x53643000 0x00 0x53643000 0x00 0x00001000>, /* DWC I3C1 */
+				<0x00 0x53683000 0x00 0x53683000 0x00 0x00001000>, /* DWC I3C2 */
+				<0x00 0x53700000 0x00 0x53700000 0x00 0x00090200>, /* McSPI0-9 */
+				<0x00 0x53904000 0x00 0x53904000 0x00 0x00131000>, /* MCU UART0-19 */
+				<0x00 0x53b00000 0x00 0x53b00000 0x00 0x00001000>, /* DWC I2C */
+				<0x00 0x53b10000 0x00 0x53b10000 0x00 0x000b0100>, /* PWM */
+				<0x00 0x53c04000 0x00 0x53c04000 0x00 0x00001000>,
+				<0x00 0x55000000 0x00 0x55000000 0x00 0x01782000>, /* XS_CAN */
+				<0x00 0x5e003000 0x00 0x5e003000 0x00 0x00000400>, /* xSPI_0 */
+				<0x00 0x5e013000 0x00 0x5e013000 0x00 0x00000400>, /* xSPI_1 */
+				<0x00 0x5e080000 0x00 0x5e080000 0x00 0x00001000>, /* GPIO INTR */
+				<0x00 0x5e200000 0x00 0x5e200000 0x00 0x00008000>, /* MCU PADCFG */
+				<0x00 0x5e520000 0x00 0x5e520000 0x00 0x00000100>, /* RTI */
+				<0x00 0x5e800000 0x00 0x5e800000 0x00 0x000033c0>, /* MCU CTRLMMR */
+				<0x00 0x70000000 0x00 0x70000000 0x00 0x08000000>, /* xSPI0 XIP */
+				<0x00 0x78000000 0x00 0x78000000 0x00 0x08000000>; /* xSPI1 XIP */
+		};
+	};
+
+	timer {
+		compatible = "arm,armv8-timer";
+		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>, /* cntpsirq */
+			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>, /* cntpnsirq */
+			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>, /* cntvirq */
+			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>; /* cnthpirq */
+	};
+};
+
+/* Now include peripherals from each bus segment */
+#include "k3-tda54-main.dtsi"
+#include "k3-tda54-mcu-wakeup.dtsi"

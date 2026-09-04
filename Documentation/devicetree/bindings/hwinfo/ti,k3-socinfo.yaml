@@ -20,14 +20,26 @@ description: |
 
 properties:
   $nodename:
-    pattern: "^chipid@[0-9a-f]+$"
+    pattern: "^chipid(@[0-9a-f]+)?$"
 
   compatible:
     items:
-      - const: ti,am654-chipid
+      - enum:
+          - ti,am654-chipid
+          - ti,tda54-chipid
 
   reg:
     maxItems: 1
+
+  ti,syscon-chipid:
+    $ref: /schemas/types.yaml#/definitions/phandle-array
+    description:
+      Phandle to the syscon covering the JTAGID register, and the byte
+      offset of the JTAGID register within that syscon's address range.
+    items:
+      - items:
+          - description: Phandle to syscon covering the JTAGID register
+          - description: Offset of the JTAGID register
 
   nvmem-cells:
     items:
@@ -39,13 +51,35 @@ properties:
 
 required:
   - compatible
-  - reg
 
 additionalProperties: false
+
+allOf:
+  - if:
+      properties:
+        compatible:
+          contains:
+            const: ti,tda54-chipid
+    then:
+      properties:
+        reg: false
+      required:
+        - ti,syscon-chipid
+    else:
+      properties:
+        ti,syscon-chipid: false
+      required:
+        - reg
 
 examples:
   - |
     chipid@43000014 {
         compatible = "ti,am654-chipid";
         reg = <0x43000014 0x4>;
+    };
+
+  - |
+    chipid {
+        compatible = "ti,tda54-chipid";
+        ti,syscon-chipid = <&scm_conf 0x14>;
     };

@@ -1528,6 +1528,18 @@ config MFD_SKY81452
 	  This driver can also be built as a module.  If so, the module
 	  will be called sky81452.
 
+config MFD_TI_TDA54
+	tristate "TI TDA54 SCM configuration controller"
+	depends on ARCH_K3 || COMPILE_TEST
+	depends on OF
+	select MFD_SYSCON
+	select TI_K3_SOCINFO_CORE
+	help
+	  Support the SCM configuration controller found on TI TDA54.
+	  The controller provides a syscon regmap and is also the
+	  hardware access path used to obtain and register K3 SoC
+	  identification information.
+
 config MFD_SC27XX_PMIC
 	tristate "Spreadtrum SC27xx PMICs"
 	depends on ARCH_SPRD || COMPILE_TEST

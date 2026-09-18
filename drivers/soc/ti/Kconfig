@@ -61,11 +61,16 @@ config TI_K3_RINGACC
 	  and a consumer. There is one RINGACC module per NAVSS on TI AM65x SoCs
 	  If unsure, say N.
 
+
+config TI_K3_SOCINFO_CORE
+	tristate
+	depends on ARCH_K3 || COMPILE_TEST
+	select SOC_BUS
+
 config TI_K3_SOCINFO
 	bool "K3 SoC Information driver" if COMPILE_TEST
 	depends on ARCH_K3 || COMPILE_TEST
-	select SOC_BUS
-	select MFD_SYSCON
+	select TI_K3_SOCINFO_CORE
 	help
 	  Include support for the SoC bus socinfo for the TI K3 Multicore SoC
 	  platforms to provide information about the SoC family and
